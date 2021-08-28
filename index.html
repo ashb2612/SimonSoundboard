@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+        <title>Simon Says</title>
+
+        <style>
+			html, body{
+				height: 100%
+			}
+
+			body{
+				background-color: #444;
+			}
+
+			html{
+				box-shadow: inset 0 0 5rem rgb(0 0 0 / 50%);
+			}
+
+            #container{
+                margin: auto;
+                width: 50%;
+                padding: 10px;
+                text-align: center;
+            }
+
+			#pic, #button{
+				padding: 10px;
+			}
+
+			#pic{
+				margin-top: auto;
+			}
+        </style>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+        
+        <script>
+            function play_random() {
+                // disable the button
+                var activationButton = document.getElementById("play_random");
+                activationButton.disabled = true;
+
+                // choose the audio clip to play
+                var fileNames = ['clips/16point4_lovingit.mp3', 'clips/actually do i want speed.mp3', 'clips/actually get him close we can cleve.mp3', 'clips/ah fuck 2.mp3', 'clips/ah fuck im out.mp3', 'clips/ah fuck.mp3', 'clips/ah hes parrying me.mp3', 'clips/ah i wish i had cc that mofo.mp3', 'clips/ah man.mp3', 'clips/ah no fucking cyclone mate honestly.mp3', 'clips/ah you get mounts n shit from doing this now.mp3', 'clips/ahImMilesAway.mp3', 'clips/alright i kill the priest somehow.mp3', 'clips/alright sound.mp3', 'clips/alrightBut.mp3', 'clips/because last time.mp3', 'clips/dieYouLilCunt.mp3', 'clips/dunno why they thought this was a good idea.mp3', 'clips/eh i love that.mp3', 'clips/elliot what are you on.mp3', 'clips/elliot.mp3', 'clips/fuck im actually going to die here 2.mp3', 'clips/fuck im actually going to die here.mp3', 'clips/fuck it yeah there we go rouges on me.mp3', 'clips/fuck.mp3', 'clips/fucker cant interupt shit.mp3', 'clips/fucker uh frozen.mp3', 'clips/get him get him.mp3', 'clips/get in on the mage.mp3', 'clips/getting loads of shit from this.mp3', 'clips/go on.mp3', 'clips/got massive sword brah.mp3', 'clips/ha yes i got boots.mp3', 'clips/heJustLeggedItWasLikeNah.mp3', 'clips/how wtf honestly how.mp3', 'clips/i dont think theyre going to nerf much.mp3', 'clips/i got the druid.mp3', 'clips/i got the same feet again wtf.mp3', 'clips/i got the wrong fn talent on as well.mp3', 'clips/i hadnt used my cloak the entire game.mp3', 'clips/i know mate if it does pop out.mp3', 'clips/i know mate im dead.mp3', 'clips/i love a cheeky between the eyes.mp3', 'clips/i love this shit give me this shit.mp3', 'clips/i need that weapon so badly as well.mp3', 'clips/i need to run like immediately.mp3', 'clips/i shouldnt have trinked that.mp3', 'clips/IActuallyDontThinkSoPal.mp3', 'clips/iGotSomeSweetGearOutOfThatToo.mp3', 'clips/ill wait until someone else pops out.mp3', 'clips/im just going to open up on this priest.mp3', 'clips/imActuallyThisClassIsSoMuchBetterImJustSoRightWithIt.mp3', 'clips/ive got nothing.mp3', 'clips/ive stunned him.mp3', 'clips/justLetMeKnow.mp3', 'clips/kill em now no.mp3', 'clips/kill him elliot i got no energy.mp3', 'clips/kill the priest elliot.mp3', 'clips/laugh 2.mp3', 'clips/laugh 3.mp3', 'clips/laugh 4.mp3', 'clips/laugh insane.mp3', 'clips/laugh.mp3', 'clips/mental.mp3', 'clips/miniForYouJam.mp3', 'clips/my cheat death min cooldown.mp3', 'clips/nah better than their rouges.mp3', 'clips/nah i sapped the priest.mp3', 'clips/nah it will be soon.mp3', 'clips/nah theyre scared mate.mp3', 'clips/nah theyve popped everything now get em.mp3', 'clips/nah youre note getting away mate no you fuckin aint.mp3', 'clips/nathAreYouComingBackOn.mp3', 'clips/no point i suppose.mp3', 'clips/no warrior.mp3', 'clips/no.mp3', 'clips/oh yes.mp3', 'clips/ohYeahAndYouNeedToITotallyForgot.mp3', 'clips/ok.mp3', 'clips/on him now.mp3', 'clips/ooh.mp3', 'clips/perfectRunUp.mp3', 'clips/polymorphedAgain.mp3', 'clips/reallyWellTheresDefoOneOverHere.mp3', 'clips/rep where with who.mp3', 'clips/right in going to keep my smoke bomb til later in the game.mp3', 'clips/right priest is going down.mp3', 'clips/right.mp3', 'clips/rightInFrontOfUsTheresAGuyLandedUpHere.mp3', 'clips/shall i get the hunter im going on the hunter.mp3', 'clips/shit.mp3', 'clips/smashpriest.mp3', 'clips/sound.mp3', 'clips/stayInTheBubbleNath.mp3', 'clips/stun him.mp3', 'clips/technically its got worse stats.mp3', 'clips/theyre on me im cycloned.mp3', 'clips/theyveSortedTheDropsOutNow.mp3', 'clips/thinkHesNearMeYeahHesHere.mp3', 'clips/this hunter was just shocking.mp3', 'clips/this hunters weak af elliot.mp3', 'clips/this is it this is it bois.mp3', 'clips/to be fair.mp3', 'clips/very nice.mp3', 'clips/was struggling to get any tokens.mp3', 'clips/watchOutJamTheresAGuyToOurLeft.mp3', 'clips/we get a title.mp3', 'clips/well its good they try and merk me.mp3', 'clips/well when theyre all together i think our cleve.mp3', 'clips/weNeedAnotherHundredJustDo10More.mp3', 'clips/what are we going on btw elltio.mp3', 'clips/what did you say you got.mp3', 'clips/what is all this.mp3', 'clips/what we got rouge oh god yeah.mp3', 'clips/whatTimeYouGoing.mp3', 'clips/which mage.mp3', 'clips/whoa.mp3', 'clips/whyHaveYouRunOffThen.mp3', 'clips/yeah 2.mp3', 'clips/yeah easy fucking peasy.mp3', 'clips/yeah just call what youre hitting elliot.mp3', 'clips/yeah thats probably it then great cleve.mp3', 'clips/yeah there we go.mp3', 'clips/yeah yeah i actually need it.mp3', 'clips/yeah you did 1 mil.mp3', 'clips/yeah.mp3', 'clips/yeahINeedToFuckinDoIt.mp3', 'clips/yeahItCanBeGreat.mp3', 'clips/yeahOhYear.mp3', 'clips/youGotAnyAmmo.mp3']
+                var clipToPlay = Math.floor(Math.random() * fileNames.length);
+				
+            	// play audio
+                var audio = new Audio(fileNames[clipToPlay]);
+                audio.play();
+
+                // re-enable the button after audio finishes
+                audio.onended = function()
+                {
+                    activationButton.disabled = false;
+                }
+            }
+        </script>
+
+
+
+        <div id="container">
+            <div id="pic">
+                <img class="img-fluid" src="simon.jpg">
+            </div>
+            
+            <div id="button">
+                <button type="button" class="btn btn-lg btn-secondary" onclick="play_random()" id="play_random">Simon Says
+                    <!-- <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> -->
+                </button>
+            </div>
+        </div>
+
+
+        <!-- <button class="btn btn-primary" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        </button> -->
+
+    </body>
+</html>
